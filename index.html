@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<<<<<<< HEAD
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo de Filmes - Connie</title>
@@ -45,3 +46,637 @@
 </body>
 </html>
 
+=======
+  <meta charset="UTF-8">
+  <title>Filmes de Connie</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .filme {
+      border-bottom: 1px solid #ccc;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Filmes de Connie</h1>
+  <div id="filmes-container"></div>
+
+  <script>
+    class Filme_Connie {
+      constructor(nome, genero, duracao) {
+        this.nome = nome;
+        this.genero = genero;
+        this.duracao = duracao;
+        this.assistido = false;
+      }
+
+      exibir_dados_Connie() {
+        const status = this.assistido ? "Assistido" : "Não assistido";
+        return `
+          <div class="filme">
+            <p><strong>Nome:</strong> ${this.nome}</p>
+            <p><strong>Gênero:</strong> ${this.genero}</p>
+            <p><strong>Duração:</strong> ${this.duracao} minutos</p>
+            <p><strong>Status:</strong> ${status}</p>
+          </div>
+        `;
+      }
+
+      marcar_como_assistido_Connie() {
+        this.assistido = true;
+      }
+    }
+
+    // Criar os objetos dos filmes
+    const filme1_Connie = new Filme_Connie("A Origem", "Ficção Científica", 148);
+    const filme2_Connie = new Filme_Connie("O Poderoso Chefão", "Drama", 175);
+
+    // Exibir os dados no HTML
+    const container = document.getElementById("filmes-container");
+    container.innerHTML += filme1_Connie.exibir_dados_Connie();
+    container.innerHTML += filme2_Connie.exibir_dados_Connie();
+  </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Filmes de Connie</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .filme {
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+      padding: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Filmes de Connie</h1>
+
+  <div>
+    <label for="generoFiltro">Filtrar por gênero:</label>
+    <input type="text" id="generoFiltro" placeholder="Ex: Ficção Científica">
+    <button onclick="filtrarPorGenero()">Filtrar</button>
+  </div>
+
+  <h2>Todos os Filmes</h2>
+  <div id="filmes-container"></div>
+
+  <h2>Filmes Filtrados</h2>
+  <div id="filtrados-container"></div>
+
+  <script>
+    class Filme_Connie {
+      constructor(nome, genero, duracao) {
+        this.nome = nome;
+        this.genero = genero;
+        this.duracao = duracao;
+        this.assistido = false;
+      }
+
+      marcar_como_assistido_Connie() {
+        this.assistido = true;
+      }
+
+      exibir_dados_Connie() {
+        const status = this.assistido ? "Assistido" : "Não assistido";
+        return `
+          <div class="filme">
+            <p><strong>Nome:</strong> ${this.nome}</p>
+            <p><strong>Gênero:</strong> ${this.genero}</p>
+            <p><strong>Duração:</strong> ${this.duracao} minutos</p>
+            <p><strong>Status:</strong> ${status}</p>
+          </div>
+        `;
+      }
+
+      static filtrar_por_genero_Connie(genero, lista_filmes) {
+        return lista_filmes.filter(filme => filme.genero.toLowerCase() === genero.toLowerCase());
+      }
+    }
+
+    class FilmeFavorito_Connie extends Filme_Connie {
+      constructor(nome, genero, duracao, nota) {
+        super(nome, genero, duracao);
+        this.nota = nota;
+      }
+
+      avaliar_filme_Connie(novaNota) {
+        if (novaNota >= 0 && novaNota <= 10) {
+          this.nota = novaNota;
+        } else {
+          alert("A nota deve estar entre 0 e 10.");
+        }
+      }
+
+      exibir_dados_Connie() {
+        const base = super.exibir_dados_Connie();
+        return base.replace('</div>', `<p><strong>Nota:</strong> ${this.nota}/10</p></div>`);
+      }
+    }
+
+    // Criando objetos
+    const filme_Connie1 = new Filme_Connie("A Origem", "Ficção Científica", 148);
+    const filme_Connie2= new Filme_Connie("O Poderoso Chefão", "Drama", 175);
+    const filme_Connie3= new FilmeFavorito_Connie("Interestelar", "Ficção Científica", 169, 9);
+
+    // Marcar como assistido e avaliar
+    filme1.marcar_como_assistido_Connie();
+    filme3.avaliar_filme_Connie(10);
+
+    const filmes_Connie = [filme1, filme2, filme3];
+
+    function renderFilmes(containerId, lista) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = "";
+      lista.forEach(filme => {
+        container.innerHTML += filme.exibir_dados_Connie();
+      });
+    }
+
+    function filtrarPorGenero() {
+      const genero = document.getElementById("generoFiltro").value;
+      const filtrados = Filme_Connie.filtrar_por_genero_Connie(genero, filmes);
+      renderFilmes("filtrados-container", filtrados);
+    }
+
+    // Exibir todos os filmes inicialmente
+    renderFilmes("filmes-container", filmes);
+  </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Filmes com Encapsulamento - Connie</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .filme {
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+      padding: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Filmes de Connie com Encapsulamento</h1>
+
+  <div>
+    <label for="generoFiltro">Filtrar por gênero:</label>
+    <input type="text" id="generoFiltro" placeholder="Ex: Ficção Científica">
+    <button onclick="filtrarPorGenero()">Filtrar</button>
+  </div>
+
+  <h2>Todos os Filmes</h2>
+  <div id="filmes-container"></div>
+
+  <h2>Filmes Filtrados</h2>
+  <div id="filtrados-container"></div>
+
+  <script>
+    class Filme_Connie {
+      #duracao;
+
+      constructor(nome, genero, duracao) {
+        this.nome = nome;
+        this.genero = genero;
+        this.#duracao = duracao;
+        this.assistido = false;
+      }
+
+      get_duracao_Connie() {
+        return this.#duracao;
+      }
+
+      set_duracao_Connie(novaDuracao) {
+        if (novaDuracao > 0) {
+          this.#duracao = novaDuracao;
+        } else {
+          alert("A duração deve ser positiva.");
+        }
+      }
+
+      classificar_duracao_Connie() {
+        if (this.#duracao < 90) return "Curto";
+        else if (this.#duracao <= 150) return "Médio";
+        else return "Longo";
+      }
+
+      marcar_como_assistido_Connie() {
+        this.assistido = true;
+      }
+
+      exibir_dados_Connie() {
+        const status = this.assistido ? "Assistido" : "Não assistido";
+        return `
+          <div class="filme">
+            <p><strong>Nome:</strong> ${this.nome}</p>
+            <p><strong>Gênero:</strong> ${this.genero}</p>
+            <p><strong>Duração:</strong> ${this.#duracao} minutos (${this.classificar_duracao_Connie()})</p>
+            <p><strong>Status:</strong> ${status}</p>
+          </div>
+        `;
+      }
+
+      static filtrar_por_genero_Connie(genero, lista_filmes) {
+        return lista_filmes.filter(f => f.genero.toLowerCase() === genero.toLowerCase());
+      }
+    }
+
+    class FilmeFavorito_Connie extends Filme_Connie {
+      constructor(nome, genero, duracao, nota) {
+        super(nome, genero, duracao);
+        this.nota = nota;
+      }
+
+      avaliar_filme_Connie(novaNota) {
+        if (novaNota >= 0 && novaNota <= 10) {
+          this.nota = novaNota;
+        } else {
+          alert("A nota deve estar entre 0 e 10.");
+        }
+      }
+
+      exibir_dados_Connie() {
+        const base = super.exibir_dados_Connie();
+        return base.replace('</div>', `<p><strong>Nota:</strong> ${this.nota}/10</p></div>`);
+      }
+    }
+
+    // Criando filmes
+    const filme1 = new Filme_Connie("A Origem", "Ficção Científica", 148);
+    const filme2 = new Filme_Connie("Curtindo a Vida Adoidado", "Comédia", 103);
+    const filme3 = new FilmeFavorito_Connie("Interestelar", "Ficção Científica", 169, 9);
+
+    // Marcando como assistido e avaliando
+    filme1.marcar_como_assistido_Connie();
+    filme3.avaliar_filme_Connie(10);
+
+    // Usando setter e getter
+    filme2.set_duracao_Connie(85);
+    console.log(`Nova duração de ${filme2.nome}: ${filme2.get_duracao_Connie()} minutos`);
+
+    const filmes_ = [filme1, filme2, filme3];
+
+    function renderFilmes(containerId, lista) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = "";
+      lista.forEach(filme => {
+        container.innerHTML += filme.exibir_dados_Connie();
+      });
+    }
+
+    function filtrarPorGenero() {
+      const genero = document.getElementById("generoFiltro").value;
+      const filtrados = Filme_Connie.filtrar_por_genero_Connie(genero, filmes);
+      renderFilmes("filtrados-container", filtrados);
+    }
+
+    // Exibir todos os filmes inicialmente
+    renderFilmes("filmes-container", filmes);
+  </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Filmes com Banco de Dados (Simulado) - Connie</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .filme { border: 1px solid #ccc; margin-bottom: 15px; padding: 15px; }
+    .btn { margin-top: 5px; }
+  </style>
+</head>
+<body>
+  <h1>🎬 Catálogo de Filmes (Connie)</h1>
+
+  <h2>Adicionar Filme</h2>
+  <form id="form-filme">
+    <label>Nome: <input type="text" id="nome" required></label><br>
+    <label>Gênero: <input type="text" id="genero" required></label><br>
+    <label>Duração (min): <input type="number" id="duracao" required></label><br>
+    <label>Favorito: <input type="checkbox" id="favorito"></label><br>
+    <label>Nota (se favorito): <input type="number" id="nota" min="0" max="10"></label><br>
+    <button type="submit">Adicionar Filme</button>
+  </form>
+
+  <h2>Filmes Salvos</h2>
+  <div id="filmes-container"></div>
+
+  <script>
+    class Filme_Connie {
+      #duracao;
+
+      constructor(nome, genero, duracao, assistido = false) {
+        this.nome = nome;
+        this.genero = genero;
+        this.#duracao = duracao;
+        this.assistido = assistido;
+      }
+
+      get_duracao_Connie() {
+        return this.#duracao;
+      }
+
+      set_duracao_Connie(novaDuracao) {
+        if (novaDuracao > 0) this.#duracao = novaDuracao;
+      }
+
+      classificar_duracao_Connie() {
+        const d = this.#duracao;
+        return d < 90 ? "Curto" : d <= 150 ? "Médio" : "Longo";
+      }
+
+      marcar_como_assistido_Connie() {
+        this.assistido = true;
+      }
+
+      exibir_dados_Connie(id) {
+        const status = this.assistido ? "Assistido" : "Não assistido";
+        return `
+          <div class="filme">
+            <strong>${this.nome}</strong><br>
+            Gênero: ${this.genero}<br>
+            Duração: ${this.#duracao} min (${this.classificar_duracao_Connie()})<br>
+            Status: ${status}<br>
+            <button class="btn" onclick="excluirFilme(${id})">🗑️ Excluir</button>
+          </div>
+        `;
+      }
+
+      toJSON() {
+        return {
+          nome: this.nome,
+          genero: this.genero,
+          duracao: this.#duracao,
+          assistido: this.assistido,
+          tipo: "normal"
+        };
+      }
+    }
+
+    class FilmeFavorito_Connie extends Filme_Connie {
+      constructor(nome, genero, duracao, nota, assistido = false) {
+        super(nome, genero, duracao, assistido);
+        this.nota = nota;
+      }
+
+      avaliar_filme_Connie(novaNota) {
+        if (novaNota >= 0 && novaNota <= 10) this.nota = novaNota;
+      }
+
+      exibir_dados_Connie(id) {
+        return super.exibir_dados_Connie(id).replace('</div>', `<br>Nota: ${this.nota}/10</div>`);
+      }
+
+      toJSON() {
+        const base = super.toJSON();
+        base.tipo = "favorito";
+        base.nota = this.nota;
+        return base;
+      }
+    }
+
+    function salvarFilme(filme) {
+      const filmes = JSON.parse(localStorage.getItem("filmesConnie") || "[]");
+      filmes.push(filme.toJSON());
+      localStorage.setItem("filmesConnie", JSON.stringify(filmes));
+    }
+
+    function carregarFilmes() {
+      const filmesRaw = JSON.parse(localStorage.getItem("filmesConnie") || "[]");
+      return filmesRaw.map(f => {
+        if (f.tipo === "favorito") {
+          return new FilmeFavorito_Connie(f.nome, f.genero, f.duracao, f.nota, f.assistido);
+        } else {
+          return new Filme_Connie(f.nome, f.genero, f.duracao, f.assistido);
+        }
+      });
+    }
+
+    function excluirFilme(index) {
+      const filmes = JSON.parse(localStorage.getItem("filmesConnie") || "[]");
+      filmes.splice(index, 1);
+      localStorage.setItem("filmesConnie", JSON.stringify(filmes));
+      renderFilmes();
+    }
+
+    function renderFilmes() {
+      const container = document.getElementById("filmes-container");
+      const filmes = carregarFilmes();
+      container.innerHTML = "";
+      filmes.forEach((filme, idx) => {
+        container.innerHTML += filme.exibir_dados_Connie(idx);
+      });
+    }
+
+    document.getElementById("form-filme").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const nome = document.getElementById("nome").value;
+      const genero = document.getElementById("genero").value;
+      const duracao = parseInt(document.getElementById("duracao").value);
+      const favorito = document.getElementById("favorito").checked;
+      const nota = parseFloat(document.getElementById("nota").value) || 0;
+
+      let filme;
+      if (favorito) {
+        filme = new FilmeFavorito_Connie(nome, genero, duracao, nota);
+      } else {
+        filme = new Filme_Connie(nome, genero, duracao);
+      }
+      filme.marcar_como_assistido_Connie();
+      salvarFilme(filme);
+      renderFilmes();
+      this.reset();
+    });
+
+    renderFilmes();
+  </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catálogo de Filmes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      color: #333;
+    }
+    form, .filme {
+      background: white;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input {
+      padding: 5px;
+      width: 100%;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .filme {
+      border-left: 5px solid #007bff;
+    }
+    .assistido {
+      border-color: green;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🎬 Catálogo de Filmes</h1>
+
+<form id="formFilme">
+  <label>Nome: <input type="text" id="nome" required /></label>
+  <label>Gênero: <input type="text" id="genero" required /></label>
+  <label>Duração (min): <input type="number" id="duracao" required /></label>
+  <label>Nota (opcional): <input type="number" id="nota" min="0" max="10" /></label>
+  <button type="submit">Adicionar Filme</button>
+</form>
+
+<div id="listaFilmes"></div>
+
+<script>
+  class Filme {
+    constructor(nome, genero, duracao) {
+      this.nome = nome;
+      this.genero = genero;
+      this._duracao = duracao;
+      this.assistido = false;
+    }
+
+    getDuracao() {
+      return this._duracao;
+    }
+
+    setDuracao(novaDuracao) {
+      if (novaDuracao > 0) this._duracao = novaDuracao;
+    }
+
+    classificarDuracao() {
+      if (this._duracao < 90) return "Curto";
+      if (this._duracao <= 150) return "Médio";
+      return "Longo";
+    }
+
+    marcarComoAssistido() {
+      this.assistido = true;
+    }
+
+    exibirDados() {
+      return `
+        <strong>${this.nome}</strong><br>
+        Gênero: ${this.genero}<br>
+        Duração: ${this._duracao} min (${this.classificarDuracao()})<br>
+        Status: ${this.assistido ? "Assistido" : "Não assistido"}<br>
+      `;
+    }
+  }
+
+  class FilmeFavorito extends Filme {
+    constructor(nome, genero, duracao, nota) {
+      super(nome, genero, duracao);
+      this.nota = nota;
+    }
+
+    avaliarFilme(novaNota) {
+      if (novaNota >= 0 && novaNota <= 10) this.nota = novaNota;
+    }
+
+    exibirDados() {
+      return super.exibirDados() + `Nota: ${this.nota}/10<br>`;
+    }
+  }
+
+  const filmes = [];
+
+  document.getElementById("formFilme").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const nome = document.getElementById("nome").value;
+    const genero = document.getElementById("genero").value;
+    const duracao = parseInt(document.getElementById("duracao").value);
+    const nota = document.getElementById("nota").value;
+
+    let novoFilme;
+    if (nota) {
+      novoFilme = new FilmeFavorito(nome, genero, duracao, parseFloat(nota));
+    } else {
+      novoFilme = new Filme(nome, genero, duracao);
+    }
+
+    filmes.push(novoFilme);
+    atualizarLista();
+    this.reset();
+  });
+
+  function atualizarLista() {
+    const lista = document.getElementById("listaFilmes");
+    lista.innerHTML = "";
+
+    filmes.forEach((filme, index) => {
+      const div = document.createElement("div");
+      div.className = "filme" + (filme.assistido ? " assistido" : "");
+      div.innerHTML = filme.exibirDados();
+
+      const btnAssistir = document.createElement("button");
+      btnAssistir.textContent = filme.assistido ? "Desmarcar Assistido" : "Marcar como Assistido";
+      btnAssistir.onclick = () => {
+        filme.assistido = !filme.assistido;
+        atualizarLista();
+      };
+
+      const btnExcluir = document.createElement("button");
+      btnExcluir.textContent = "Excluir";
+      btnExcluir.onclick = () => {
+        filmes.splice(index, 1);
+        atualizarLista();
+      };
+
+      div.appendChild(btnAssistir);
+      div.appendChild(btnExcluir);
+      lista.appendChild(div);
+    });
+  }
+</script>
+
+</body>
+</html>
+>>>>>>> b7fd912f54095c09c0de79cae1dfc6122f33ea47
