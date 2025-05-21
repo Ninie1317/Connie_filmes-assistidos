@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Filmes - Connie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Zilla+Slab:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Catálogo de Filmes - Connie</h1>
+</header>
+
+<section>
+    <div class="form-container">
+        <h2>Adicionar Filme</h2>
+        <form id="movieForm">
+            <input type="text" id="nome" placeholder="Nome do Filme" required />
+            <input type="text" id="genero" placeholder="Gênero" required />
+            <input type="number" id="duracao" placeholder="Duração (minutos)" required />
+            <button type="submit">Adicionar Filme</button>
+        </form>
+    </div>
+
+    <div class="filter-container">
+        <h2>Filtrar por Gênero</h2>
+        <select id="filterGenero" onchange="filtrarFilmes()">
+            <option value="">Todos os Gêneros</option>
+            <option value="Ficção Científica">Ficção Científica</option>
+            <option value="Ação">Ação</option>
+            <option value="Drama">Drama</option>
+            <option value="Comédia">Comédia</option>
+            <option value="Terror">Terror</option>
+        </select>
+    </div>
+
+    <div id="movieList">
+        <!-- Filmes serão exibidos aqui -->
+    </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
+
